@@ -1,0 +1,53 @@
+{% extends 'mac/base.html' %}
+{% block content %}
+{% if user.is_authenticated %}
+<center><h2 class="display-6">Tranzactiile mele</h2></center>
+<br/>
+{% load static %}
+<link rel="stylesheet" href="{% static 'style_for_transactions_list.css' %}">
+{% for transaction in transactions_list %}
+<div class="stilizare">
+  <div class="card mb-3" style="max-width: 1300px;">
+    <div class="shadow bg-body rounded">
+      <div class="row g-0">
+        <div class="col-md-8">
+          <div class="card-body">
+            <center>
+              <h2 class="display-6">Beneficiar: {{ transaction.to_user }} | Valoare: {{transaction.amount}} RON</h2>
+            </center>
+            <p>Incercari ramase: {{transaction.attemps}}</p>
+           	{% if transaction.is_validated == False%}
+           	{% if appUser.locked == False %}
+           	<center><form class="d-flex" method=POST action="{% url 'validate-transaction' transaction.id %}">
+        {% csrf_token %}
+        <input class="form-control me-2" type="search" placeholder="Introdu PIN" aria-label="Search" name="searched">
+
+        <button class="btn btn-outline-success" type="submit">Valideaza</button>
+      </form></center>
+      <br/>
+      {%else%}
+      {%endif%}
+      {% if appUser.locked == False %}
+      {% if transaction.attemps == 3%}
+      <a href="{% url 'delete-transaction' transaction.id %}" class="btn btn-outline-danger">Sterge tranzactie</a>
+      {%else%}
+      {%endif%}
+      {%else%}
+      <p>Contul tau este blocat!</p>
+      {%endif%}
+           	{% else%}
+           	{%endif%}
+
+            
+            
+          </div>
+        </div>
+      </div>
+  </div>
+</div>
+</div>
+{% endfor %}
+{% else %}
+<center><h2 class="display-6">Trebuie sa fi conectat pentru a putea sa iti vizualizezi tranzactiile!</h2></center>
+{% endif %}
+{% endblock %}

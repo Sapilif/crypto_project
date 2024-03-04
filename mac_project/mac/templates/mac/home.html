@@ -1,0 +1,38 @@
+{% extends 'mac/base.html' %}
+
+{%block content%}
+<center>
+
+
+{% if user.is_authenticated %}
+		<h1>Bine ai revenit, {{ appUser.user.first_name}}!</h1>
+        <h5>Fonduri disponibile: {{appUser.funds}} RON </h5>
+
+        <hr class="border border-dark border-2 opacity-100">
+
+        <img src="https://lh3.googleusercontent.com/fife/AGXqzDlZrHKQ-omU7jlQcklPulv97U2VYl7IGTI9Bpb1imztk-DHYQZsjyegEb-bLvXF9XieywBuXRvVb-T4CE3HJW4n3DZ7m2K1TaqDkE779e3P6n5vbQxrZvF1R99AmXOJC9x5XsR_TYskoTSCMAIootk8gztYYaY3Dop89uepEZ4ypRUWfng0O_Eny247eukIOHzi3ZoZZMBfMLjZrLOtIv924WLa2y5VQo2N0QcbmOWijY3Q15pNYCSWsPHYLTqigiu4hXZ20kjweg7L5uhlUJfKITCRb-AI-r3dHuGA4uspFADOtDghI5UxTmnbL3yYntl34aXjoTy9aF4rbYH-AGUSJnSL0VMG39n5p1w-Hu-KPH8YPPesbc1cIH_2rVtSRPGqBCU-lzFiHfTJm0f0JjhSPXZXRCLfT4Cbr1drJ53VRUNaKkqK-KxyrPTUOLqjHbwQFXeQtv1zc9ro8b8OqGpiIJAe8amSs4XA-PEnE7aQqxj9tHZD8-2MDOQ2jb2v4-N_Nnx9PIBDQVBG6EeD8mfyCXHI9Sc_W-4rfg6B6v3fsMnf03wDT_ZF2-WuInvj1EOL0-S4QUixxkgn_crKbORVHAefMiXSNphEh4OQ_vj5abEi6fD7cnAK8Lo3EITt312sVIqO8ppOdgR8IuNQEM2TG9QMcuM7ry5GPKJFR7_FqsGcN5gSfOXwoqm9Pw9cXPDS9F_FWS1TyMXRvL_wIl8D06Eo9ADIKYYWR1sSqy7QEnnly1Vq2-S5jjJZZUGCI3zmBKpJPv2i765r-kGpshVXeGIHJgjQDwhga497sXWwM_dEvUMi1TZxZVGa4Fxh7sdnK-JgU-woQ5SlAi-uXomYF7GoKg1m6GLpmyQT-CUm6BrB1mDzg_IzxIE_DvKu4z8qCA7GNPjknwHyywZkouErA-1Hqen4hQrTmclH2WdutTI8YImNYyblI70PlsFhjPpTBoxbp3CAzGqO3u1Mmt5nuq92Naqgc8hhV00TRLdLvd6hbEkxGUFYVzgcvFwDOLVcHnR659qErvmNCcVY18w-55QkBItuF8lFrm1lVJEjjrtZqm-ONM9Nj3I3fs8Yl0USAEAWh3TORKjPY3ZTRBjXWY59jCZvZY2Xz_R0z-_7hwZYs4lcrzuHB-SSdU1165Lrkc4oUnJvSPeCn-egwhGV-X6tNc0C9zvAZYf4SfcYCRoZuIXnD-9-focIS-3S5SdW5NyE2YrREpILzpgjo1Y4LAJThZPFUwUQELPLXzZP_r1Icn0HGWzFWAf0BJJtRxVn4ZUU5kLkg68eXtdZzSvAR0Pc7EaK1444FPmDXw8eajmEZzCNWQnJYwKgyemH09X40prRk2sF5i6YAw4WT4VzlSCEFLocR-qwI8uVShxQjYDj3zSwnMpLb5aLHY8N9QLdSsWqgo2lfrUntZ3rVUmaotb9USPjLm20maCR3ATWx-fLI51XiZWspr5o5xB09eCoDLo4MhDpG-f_KBMOHuBpDEkDNG-BCwVY6f9iVETLw8giuzz5jvGwaDZxDzQUbIuz2DmbaX07iZjbn4uOc3W5bEqy32caghpLQBtvlIVE7_ia4FF6wCRkXZAw4Dbm85FwBnlLQRidTw=w1000?authuser=1/view" class="d-block w-12" alt="...">
+
+
+        {% else %}
+        <h2>Conecteaza-te sau inregistreaza-te pentru a utiliza</h2>
+        <h2>Internet Banking</h2>
+        <hr class="border border-dark border-2 opacity-100">
+        <img src="https://lh3.googleusercontent.com/fife/AGXqzDlZrHKQ-omU7jlQcklPulv97U2VYl7IGTI9Bpb1imztk-DHYQZsjyegEb-bLvXF9XieywBuXRvVb-T4CE3HJW4n3DZ7m2K1TaqDkE779e3P6n5vbQxrZvF1R99AmXOJC9x5XsR_TYskoTSCMAIootk8gztYYaY3Dop89uepEZ4ypRUWfng0O_Eny247eukIOHzi3ZoZZMBfMLjZrLOtIv924WLa2y5VQo2N0QcbmOWijY3Q15pNYCSWsPHYLTqigiu4hXZ20kjweg7L5uhlUJfKITCRb-AI-r3dHuGA4uspFADOtDghI5UxTmnbL3yYntl34aXjoTy9aF4rbYH-AGUSJnSL0VMG39n5p1w-Hu-KPH8YPPesbc1cIH_2rVtSRPGqBCU-lzFiHfTJm0f0JjhSPXZXRCLfT4Cbr1drJ53VRUNaKkqK-KxyrPTUOLqjHbwQFXeQtv1zc9ro8b8OqGpiIJAe8amSs4XA-PEnE7aQqxj9tHZD8-2MDOQ2jb2v4-N_Nnx9PIBDQVBG6EeD8mfyCXHI9Sc_W-4rfg6B6v3fsMnf03wDT_ZF2-WuInvj1EOL0-S4QUixxkgn_crKbORVHAefMiXSNphEh4OQ_vj5abEi6fD7cnAK8Lo3EITt312sVIqO8ppOdgR8IuNQEM2TG9QMcuM7ry5GPKJFR7_FqsGcN5gSfOXwoqm9Pw9cXPDS9F_FWS1TyMXRvL_wIl8D06Eo9ADIKYYWR1sSqy7QEnnly1Vq2-S5jjJZZUGCI3zmBKpJPv2i765r-kGpshVXeGIHJgjQDwhga497sXWwM_dEvUMi1TZxZVGa4Fxh7sdnK-JgU-woQ5SlAi-uXomYF7GoKg1m6GLpmyQT-CUm6BrB1mDzg_IzxIE_DvKu4z8qCA7GNPjknwHyywZkouErA-1Hqen4hQrTmclH2WdutTI8YImNYyblI70PlsFhjPpTBoxbp3CAzGqO3u1Mmt5nuq92Naqgc8hhV00TRLdLvd6hbEkxGUFYVzgcvFwDOLVcHnR659qErvmNCcVY18w-55QkBItuF8lFrm1lVJEjjrtZqm-ONM9Nj3I3fs8Yl0USAEAWh3TORKjPY3ZTRBjXWY59jCZvZY2Xz_R0z-_7hwZYs4lcrzuHB-SSdU1165Lrkc4oUnJvSPeCn-egwhGV-X6tNc0C9zvAZYf4SfcYCRoZuIXnD-9-focIS-3S5SdW5NyE2YrREpILzpgjo1Y4LAJThZPFUwUQELPLXzZP_r1Icn0HGWzFWAf0BJJtRxVn4ZUU5kLkg68eXtdZzSvAR0Pc7EaK1444FPmDXw8eajmEZzCNWQnJYwKgyemH09X40prRk2sF5i6YAw4WT4VzlSCEFLocR-qwI8uVShxQjYDj3zSwnMpLb5aLHY8N9QLdSsWqgo2lfrUntZ3rVUmaotb9USPjLm20maCR3ATWx-fLI51XiZWspr5o5xB09eCoDLo4MhDpG-f_KBMOHuBpDEkDNG-BCwVY6f9iVETLw8giuzz5jvGwaDZxDzQUbIuz2DmbaX07iZjbn4uOc3W5bEqy32caghpLQBtvlIVE7_ia4FF6wCRkXZAw4Dbm85FwBnlLQRidTw=w1000?authuser=1/view" class="d-block w-12" alt="...">
+
+ {% endif %}
+
+<p class="lead">
+    Aplicația noastră de internet banking reprezintă o soluție modernă și sigură pentru gestionarea eficientă a finanțelor tale. Beneficiază de acces rapid și ușor la conturile tale bancare, efectuează plăți și transferuri în timp real, monitorizează tranzacțiile recente, gestionează cardurile tale și primește notificări în timp real pentru toate activitățile financiare. Cu o interfață intuitivă și securitate de ultimă generație, aplicația noastră internet banking îți oferă libertatea de a controla banii tăi oriunde și oricând, simplificând gestionarea bugetului și sporind comoditatea experienței tale bancare.
+    <br/><br/>
+    <hr class="border border-dark border-2 opacity-100">
+</p>
+
+
+
+Copyright (C) {{current_year}}
+
+{{time}}
+<br/><br/>
+</center>
+
+{%endblock%}

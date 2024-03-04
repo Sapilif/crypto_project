@@ -1,0 +1,63 @@
+{% extends 'mac/base.html' %}
+{% block content %}
+{% if user.is_authenticated %}
+<h2 class="display-6">Contactele mele de incredere:</h2>
+<h4>Pentru a stabili contactele de incredere si numarul de telefon, luati legatura cu o sucursala bancara.</h4>
+<br/>
+
+{% for trustcontact in trustcontacts_list %}
+
+<div class="card" style="width: 18rem;">
+  <div class="card-header">
+    {{trustcontact.trust_user}}
+  </div>
+</div>
+<br/>
+
+
+{% endfor %}
+<hr class="border border-dark border-2 opacity-100">
+<h2 class="display-6">Pentru ce utilizatori sunt eu contact de incredere?</h2>
+<br/>
+
+{% for trustcontact in trustcontacts_list2 %}
+
+<div class="card" style="width: 18rem;">
+  <div class="card-header">
+    {{trustcontact.user}}
+  </div>
+  <ul class="list-group list-group-flush">
+    {% if trustcontact.user.locked == True %}
+    <li class="list-group-item">PIN deblocare: {{trustcontact.user.unlock_pin}}</li>
+    {% else %}
+    {% endif %}
+    
+  </ul>
+</div>
+<br/>
+
+
+{% endfor %}
+
+
+
+
+ {% if appUser.locked == True %}
+ <hr class="border border-dark border-2 opacity-100">
+     <h2 class="display-6">Deblocare cont</h2><br/>
+      <form class="d-flex" method=POST action="{% url 'unlock-account' %}">
+        {% csrf_token %}
+        <input class="form-control me-2" type="search" placeholder="Introdu PIN-ul pentru deblocare" aria-label="Search" name="searched">
+        <button class="btn btn-outline-secondary" type="submit">Deblocheaza contul</button>
+      </form>
+      {% else %}
+      {% endif %}
+
+
+
+
+
+{% else %}
+<center><h2 class="display-6">Trebuie sa fi conectat pentru a putea sa iti vizualizezi contactele de incredere!</h2></center>
+{% endif %}
+{% endblock %}

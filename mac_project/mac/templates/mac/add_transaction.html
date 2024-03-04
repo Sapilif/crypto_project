@@ -1,0 +1,29 @@
+{% extends 'mac/base.html' %}
+
+{% block content %}
+  <center>
+    <h2 class="display-6">Realizeaza o tranzactie bancara</h2>
+  </center>
+  <br/>
+  {% if submitted %}
+    <center>
+      <h2 class="display-6">Tranzactia a fost generata. Acum trebuie sa o validezi folosind PIN-ul de pe telefon!</h2>
+    </center>
+  {% else %}
+  {% if appUser.locked == False %}
+  <h5>Soldul tau disponibil: {{appUser.funds}} RON </h5>
+  <br/>
+    <form class="lead" action="" method="POST" enctype="multipart/form-data">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <br/>
+      <center>
+        <input type="submit" value="Realizeaza o tranzactie" class="btn btn-secondary">
+      </center>
+      <br/><br/><br/>
+    </form>
+    {%else%}
+    <p>Contul tau este blocat! Nu poti realiza tranzactii.</p>
+    {%endif%}
+  {% endif %}
+{% endblock %}

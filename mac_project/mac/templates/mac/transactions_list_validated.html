@@ -1,0 +1,74 @@
+{% extends 'mac/base.html' %}
+{% block content %}
+{% if user.is_authenticated %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'style_for_transactions_list.css' %}">
+<h2 class="display-6">Plati:</h2>
+<br/>
+
+{% for transaction in transactions_list_validated %}
+<div class="stilizare">
+  <div class="card mb-3" style="max-width: 1300px;">
+    <div class="shadow bg-body rounded">
+      <div class="row g-0">
+        <div class="col-md-8">
+          <div class="card-body">
+            <center>
+              <h2 class="display-6">Beneficiar: {{ transaction.to_user }} | Valoare: {{transaction.amount}} RON</h2>
+            </center>
+        
+           	{% if transaction.is_validated == False%}
+           	
+           	{% else%}
+           	{%endif%}
+
+            
+            
+          </div>
+        </div>
+      </div>
+  </div>
+</div>
+</div>
+
+{% endfor %}
+<br/>
+<hr class="border border-dark border-2 opacity-100">
+<br/>
+<h2 class="display-6">Incasari:</h2>
+<br/>
+{% for transaction in transactions_list_validated2 %}
+<div class="stilizare">
+  <div class="card mb-3" style="max-width: 1300px;">
+    <div class="shadow bg-body rounded">
+      <div class="row g-0">
+        <div class="col-md-8">
+          <div class="card-body">
+            <center>
+              <h2 class="display-6">Platitor: {{ transaction.from_user }} | Valoare: {{transaction.amount}} RON</h2>
+            </center>
+        
+            {% if transaction.is_validated == False%}
+            
+            {% else%}
+            {%endif%}
+
+            
+            
+          </div>
+        </div>
+      </div>
+  </div>
+</div>
+</div>
+
+{% endfor %}
+
+
+
+
+{% else %}
+<center><h2 class="display-6">Trebuie sa fi conectat pentru a putea sa iti vizualizezi tranzactiile!</h2></center>
+{% endif %}
+{% endblock %}
+<br/><br/><br/>
